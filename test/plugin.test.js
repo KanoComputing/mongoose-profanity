@@ -67,7 +67,10 @@ describe('Profanity plugin', function() {
         test.save(function (err, entry) {
             if (err) { throw err; }
 
-            should(entry.flags).equal(3);
+            entry.flags.should.have.length(3);
+            should(entry.flags[0]).equal('Inappropriate language');
+            should(entry.flags[1]).equal('Inappropriate language');
+            should(entry.flags[2]).equal('Inappropriate language');
             util.testPurified(entry.title, 'Test [ placeholder ] [ placeholder ]');
             util.testPurified(entry.description, '[ placeholder ]');
             entry.immune.should.equal('butt damn');
@@ -83,7 +86,7 @@ describe('Profanity plugin', function() {
         }).save(function (err, entry) {
             if (err) { throw err; }
 
-            entry.flags.should.equal(5);
+            entry.flags.should.have.length(5);
             entry.blackListed.should.be.ok;
 
             done();
@@ -96,7 +99,7 @@ describe('Profanity plugin', function() {
         }).save(function (err, entry) {
             if (err) { throw err; }
 
-            entry.flags.should.equal(1);
+            entry.flags.should.have.length(1);
             entry.text.should.equal('testing p%%p something partial replace');
             entry.blackListed.should.not.be.ok;
 
@@ -115,7 +118,7 @@ describe('Profanity plugin', function() {
             util.testPurified(
                 entry.text,
                 '[ placeholder ] unchanged [ placeholder ] unchanged [ placeholder ] unchanged',
-                'oof|rab|test'
+                'oof|rab|tset'
             );
 
             done();
