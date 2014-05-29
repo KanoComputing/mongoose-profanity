@@ -1,4 +1,4 @@
-var defaultExp = '(bunnies|butterfly|kitten|love|gingerly|flowers|puppy|joyful)';
+var defaultExp = '(bunnies|butterfly|kitten|love|gingerly|flowers|puppy|joyful|rainbows|unicorn)';
 
 function testPurified (str, format, exp) {
     exp = exp || defaultExp;
