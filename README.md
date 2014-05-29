@@ -2,7 +2,7 @@
 
 A plugin to auto-moderate profanity in your content.
 
-Replaces offensive words with random inoffensive replacement words on save, incrementing a `flags` field counter and turning a `blackListed` field to `true` when `count` reaches a limit.
+Replaces offensive words with random inoffensive replacement words on save, adding an entry to the `flags` field and turning a `blackListed` field to `true` when the length of `flags` reaches a limit.
 
 It can be customised to simply obscure bad words with a symbol and configured with custom list of forbidden words and replacements.
 
@@ -37,7 +37,7 @@ var test = new Test({
     message: 'What a bloody damn horrible weather, crap!'
 }).save(function (err, entry) {
     console.log(entry.message, entry.flags, entry.blackListed);
-    // 'What a unicorn joyful horrible day, gingerly!', 3, true
+    // 'What a unicorn joyful horrible day, gingerly!', [ .. ], true
 });
 ```
 
@@ -79,7 +79,7 @@ var test = new Test({
     uncheckedMessage: 'We can totally talk business here'
 }).save(function (err, entry) {
     console.log(entry.message, entry.flags, entry.blackListed);
-    // 'We are not allowed to talk p%%%%%%s or b%%%%%%s', 2, true
+    // 'We are not allowed to talk p%%%%%%s or b%%%%%%s', [ .. ], true
 
 	console.log(uncheckedMessage);
 	// We can totally talk business here
@@ -112,7 +112,7 @@ var test = new Test({
     message: 'I'd rather use Google instead of Bing'
 }).save(function (err, entry) {
     console.log(entry.message, entry.flags, entry.blackListed);
-    // 'I'd rather use some search engine instead than some search engine', 2, true
+    // 'I'd rather use some search engine instead than some search engine', [ .. ], true
 });
 ```
 
@@ -127,8 +127,8 @@ var test = new Test({
 
 ### Added schema fields
 
-* `flags`: `Number` - Incremented every time a forbidden word is used
-* `blackListed`: `Boolean` - Turns to true when flags counter is greater than configured limit (3 by default)
+* `flags`: `Array` - Array of strings indicating the type of infraction (This plugin currently only uses 'Inappropriate language', but can be manually extended in integration in order to use the blacklisting logic)
+* `blackListed`: `Boolean` - Turns to true when the length of `flags` is greater than configured limit (3 by default)
 
 ### Test
 
