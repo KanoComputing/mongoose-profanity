@@ -1,10 +1,14 @@
 {
   "name": "mongoose-profanity",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/plugin.js",
   "scripts": {
     "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KanoComputing/mongoose-profanity"
   },
   "author": "Tancredi Trugenberger",
   "license": "MIT",

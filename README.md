@@ -8,17 +8,17 @@ It can be customised to simply obscure bad words with a symbol and configured wi
 
 It adds the following fields to your schema:
 
-## Install
+### Install
 
 To install, run:
 
 `npm install mongoose-profanity`
 
-## Simple usage
+### Simple usage
 
 Setup a 'self-moderating' model:
 
-```
+```javascript
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     profanityPlugin = require('mongoose-profanity');
@@ -41,16 +41,16 @@ var test = new Test({
 
 Only query entries which have not been blacklisted:
 
-```
+```javascript
 Test.find({ blackListed: false }, function (err, entries) {
 	console.log(entries.length);
 	// 0
 })
 ```
 
-## Advanced examples
+### Advanced examples
 
-```
+```javascript
 // Obscure a custom list of forbidden words with a given symbol, blacklist if 1 more are found
 
 var mongoose = require('mongoose'),
@@ -84,9 +84,9 @@ var test = new Test({
 });
 ```
 
-## Advanced examples
+### Advanced examples
 
-```
+```javascript
 // Replace a custom list of forbidden words with a custom list of replacement words, never blacklist
 
 var mongoose = require('mongoose'),
@@ -114,7 +114,7 @@ var test = new Test({
 });
 ```
 
-## Plugin options
+### Plugin options
 
 * `fields` - Array of schema fields to be checked by the plugin
 * `forbiddenList` - Array of forbidden terms to replace or obscure
@@ -123,19 +123,19 @@ var test = new Test({
 * `obscure`- If set to true it will obscure forbidden words (E.g. a*****b) instead of replacing them
 * `obscureSymbol` - Symbol used to obscure words if `obscured` is set to true
 
-## Added schema fields
+### Added schema fields
 
 * `flags`: `Number` - Incremented every time a forbidden word is used
 * `blackListed`: `Boolean` - Turns to true when flags counter is greater than configured limit (3 by default)
 
-## Test
+### Test
 
 Run unit-tests with `npm test`. Make sure a local mongo server is running in order for the tests to run.
 
-## Contribute
+### Contribute
 
 All contributions are welcome as long as tests are written.
 
-## Licence
+### Licence
 
 Copyright (C) 2014 Kano Computing Ltd. License: [http://www.gnu.org/licenses/gpl-2.0.txt](http://www.gnu.org/licenses/gpl-2.0.txt) GNU General Public License v2
