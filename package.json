@@ -7,7 +7,7 @@
     "test": "mocha test"
   },
   "author": "Tancredi Trugenberger",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "dependencies": {
     "lodash": "~2.4.1",
     "mongoose": "~3.x.x"
