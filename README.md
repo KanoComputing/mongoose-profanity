@@ -127,8 +127,17 @@ var test = new Test({
 
 ### Added schema fields
 
-* `flags`: `Array` - Array of strings indicating the type of infraction (This plugin currently only uses 'Inappropriate language', but can be manually extended in integration in order to use the blacklisting logic)
+* `flags`: `FlagSchema` - Flag object used by the library, open to different uses for integration (See Flag Schema)
 * `blackListed`: `Boolean` - Turns to true when the length of `flags` is greater than configured limit (3 by default)
+
+### Flag Schema
+
+The flag schema can be used for different purposes, in order to make the best out of the blacklist feature in your application.
+
+The fields in the schema are the following:
+
+* `author`: Mixed object, type and content left to the discretion of the user
+* `reason`: String containing reason for the flagging. (E.g. 'Inappropriate language')
 
 ### Test
 
