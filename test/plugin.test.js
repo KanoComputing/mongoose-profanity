@@ -36,8 +36,8 @@ var TestSchema2 = new Schema({
 });
 
 TestSchema2.plugin(profanityPlugin, {
-    partialReplace: true,
-    replaceSymbol: '%'
+    obscure: true,
+    obscureSymbol: '%'
 });
 
 var Test2 = mongoose.model('Test2', TestSchema2);
@@ -47,7 +47,7 @@ var TestSchema3 = new Schema({
 });
 
 TestSchema3.plugin(profanityPlugin, {
-    swearwordsList: [ 'foo', 'bar', 'test' ],
+    forbiddenList: [ 'foo', 'bar', 'test' ],
     replacementsList: [ 'oof', 'rab', 'tset' ]
 });
 
