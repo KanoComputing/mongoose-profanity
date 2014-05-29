@@ -8,6 +8,8 @@ It can be customised to simply obscure bad words with a symbol and configured wi
 
 It adds the following fields to your schema:
 
+The list of swearwords used by default was taken from [here](https://gist.github.com/jamiew/1112488).
+
 ### Install
 
 To install, run:
