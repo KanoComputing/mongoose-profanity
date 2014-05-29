@@ -68,9 +68,8 @@ describe('Profanity plugin', function() {
             if (err) { throw err; }
 
             entry.flags.should.have.length(3);
-            should(entry.flags[0]).equal('Inappropriate language');
-            should(entry.flags[1]).equal('Inappropriate language');
-            should(entry.flags[2]).equal('Inappropriate language');
+            should(entry.flags[0].author).equal(null);
+            entry.flags[0].reason.should.equal('Inappropriate language');
             util.testPurified(entry.title, 'Test [ placeholder ] [ placeholder ]');
             util.testPurified(entry.description, '[ placeholder ]');
             entry.immune.should.equal('butt damn');
