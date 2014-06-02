@@ -36,7 +36,6 @@ var TestSchema2 = new Schema({
 });
 
 TestSchema2.plugin(profanityPlugin, {
-    obscure: true,
     obscureSymbol: '%'
 });
 
@@ -48,7 +47,8 @@ var TestSchema3 = new Schema({
 
 TestSchema3.plugin(profanityPlugin, {
     forbiddenList: [ 'foo', 'bar', 'test' ],
-    replacementsList: [ 'oof', 'rab', 'tset' ]
+    replacementsList: [ 'oof', 'rab', 'tset' ],
+    replace: true
 });
 
 var Test3 = mongoose.model('Test3', TestSchema3);
@@ -70,8 +70,8 @@ describe('Profanity plugin', function() {
             entry.flags.should.have.length(3);
             should(entry.flags[0].author).equal(null);
             entry.flags[0].reason.should.equal('Inappropriate language');
-            util.testPurified(entry.title, 'Test [ placeholder ] [ placeholder ]');
-            util.testPurified(entry.description, '[ placeholder ]');
+            entry.title.should.equal('Test c**p b**b');
+            entry.description.should.equal('b****k');
             entry.immune.should.equal('butt damn');
             should(entry.blackListed).equal(false);
 

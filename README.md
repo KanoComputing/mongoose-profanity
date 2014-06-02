@@ -1,14 +1,16 @@
 ## Mongoose Profanity Plugin
 
-A plugin to auto-moderate profanity in your content.
+> A plugin to auto-moderate profanity in your content.
 
-Replaces offensive words with random inoffensive replacement words on save, adding an entry to the `flags` field and turning a `blackListed` field to `true` when the length of `flags` reaches a limit.
+This plugin will add a pre-save hook to your model to run a profanity check in your content, perform a chosen behaviour (Obscuring forbidden words by default), add `flags` to your entry and turning a `blackListed` field to `true` when the length of the field `flags` on your entry reaches a limit.
 
-It can be customised to simply obscure bad words with a symbol and configured with custom list of forbidden words and replacements.
+With default options it will obscure forbidden words in the following format: 'a*****b'.
 
-It adds the following fields to your schema:
+In replace mode it will replace forbidden words with random inoffensive replacement words on save.
 
-The list of swearwords used by default was taken from [here](https://gist.github.com/jamiew/1112488).
+The plugin adds the following fields to your schema:
+
+To find out more about the list of swearwords check to module used by this plugin: [profanity-util](https://github.com/KanoComputing/nodejs-profanity-util)
 
 ### Install
 
@@ -37,7 +39,7 @@ var test = new Test({
     message: 'What a bloody damn horrible weather, crap!'
 }).save(function (err, entry) {
     console.log(entry.message, entry.flags, entry.blackListed);
-    // 'What a unicorn joyful horrible day, gingerly!', [ .. ], true
+    // 'What a b****y d**n horrible day, c**p!', [ .. ], true
 });
 ```
 
@@ -67,7 +69,6 @@ var TestSchema = new Schema({
 TestSchema.plugin(profanityPlugin, {
     maxFlags: 1,
     forbiddenList: [ 'politics', 'business' ],
-    obscure: true,
     obscureSymbol: '%',
     fields: [ 'message' ]
 });
@@ -122,7 +123,7 @@ var test = new Test({
 * `forbiddenList` - Array of forbidden terms to replace or obscure
 * `replacementsList` - Array of replacement words (To pick randomly from)
 * `maxFlags` - Max flags before blacklisting (Prevents addition of custom fields, flagging and blacklisting if falsy)
-* `obscure`- If set to true it will obscure forbidden words (E.g. a*****b) instead of replacing them
+* `replace`- If set to true it will replace forbidden words with innocuous replacement words
 * `obscureSymbol` - Symbol used to obscure words if `obscured` is set to true
 
 ### Added schema fields
