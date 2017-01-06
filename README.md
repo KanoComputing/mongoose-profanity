@@ -110,7 +110,7 @@ TestSchema.plugin(profanityPlugin, {
 var Test = mongoose.model('Test', TestSchema);
 
 var test = new Test({
-    message: 'I'd rather use Google instead of Bing'
+    message: "I'd rather use Google instead of Bing"
 }).save(function (err, entry) {
     console.log(entry.message, entry.flags, entry.blackListed);
     // 'I'd rather use some search engine instead than some search engine', [ .. ], true
@@ -150,4 +150,4 @@ All contributions are welcome as long as tests are written.
 
 ### Licence
 
-Copyright (C) 2014 Kano Computing Ltd. License: [http://www.gnu.org/licenses/gpl-2.0.txt](http://www.gnu.org/licenses/gpl-2.0.txt) GNU General Public License v2
+Copyright (C) 2014, 2017 Kano Computing Ltd. Released under the MIT licence.
