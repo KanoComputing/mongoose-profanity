@@ -12,6 +12,8 @@ The plugin adds the following fields to your schema:
 
 To find out more about the list of swearwords check to module used by this plugin: [profanity-util](https://github.com/KanoComputing/nodejs-profanity-util)
 
+> Moved to mongoose 4.x since version 0.1.5, for mongoose 3.x please use version 0.1.4
+
 ### Install
 
 To install, run:

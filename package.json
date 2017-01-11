@@ -1,6 +1,6 @@
 {
   "name": "mongoose-profanity",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "main": "lib/plugin.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "~2.4.1",
-    "mongoose": "~3.x.x",
+    "mongoose": "^4.x.x",
     "profanity-util": "~0.1.0"
   },
   "devDependencies": {
