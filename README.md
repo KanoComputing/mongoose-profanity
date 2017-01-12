@@ -1,5 +1,7 @@
 ## Mongoose Profanity Plugin
 
+[![Build Status](https://travis-ci.org/KanoComputing/mongoose-profanity.svg?branch=master)](https://travis-ci.org/KanoComputing/mongoose-profanity)
+
 > A plugin to auto-moderate profanity in your content.
 
 This plugin will add a pre-save hook to your model to run a profanity check in your content, perform a chosen behaviour (Obscuring forbidden words by default), add `flags` to your entry and turning a `blackListed` field to `true` when the length of the field `flags` on your entry reaches a limit.
@@ -12,7 +14,9 @@ The plugin adds the following fields to your schema:
 
 To find out more about the list of swearwords check to module used by this plugin: [profanity-util](https://github.com/KanoComputing/nodejs-profanity-util)
 
-> Moved to mongoose 4.x since version 0.2.0, for mongoose 3.x please use version 0.1.6
+### Mongoose 3.x
+
+Since `0.2.0` the plugin works with Mongoose 4.x. For `3.x` please use version `0.1.6`.
 
 ### Install
 
