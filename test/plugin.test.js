@@ -9,6 +9,8 @@ var mongoose = require('mongoose'),
     util = require('./util'),
     Schema = mongoose.Schema;
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect('mongodb://localhost/mongooseprofanitytest');
 
 var db = mongoose.connection;
