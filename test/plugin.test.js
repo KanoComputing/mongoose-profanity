@@ -3,21 +3,31 @@ Copyright (C) 2014 Kano Computing Ltd.
 License: http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
 */
 
-var mongoose = require('mongoose'),
-    profanityPlugin = require('../lib/plugin.js'),
-    should = require('should'),
-    util = require('./util'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+
+var Mockgoose = require('mockgoose').Mockgoose;
+
+var mockgoose = new Mockgoose(mongoose);
+ 
+var profanityPlugin = require('../lib/plugin.js');
+
+var should = require('should');
+
+var util = require('./util');
+
+var Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/mongooseprofanitytest');
 
-var db = mongoose.connection;
-
-db.on('error', function (err) {
-    console.error('Connection error: please check if mongodb is running on localhost');
-    throw err;
+before( function ( done ) {
+    mockgoose.prepareStorage().then( function () {
+        // mongoose connection		 
+        mongoose.connect( 'mongodb://localhost/mongooseprofanitytest', function ( err ) {
+            console.error( 'Connection error: please check if mongodb is running on localhost' );
+            done( err );
+        });
+    });
 });
 
 var TestSchema = new Schema({
